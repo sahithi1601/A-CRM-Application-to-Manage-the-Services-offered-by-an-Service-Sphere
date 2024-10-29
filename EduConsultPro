@@ -1,0 +1,24 @@
+Create a Lightning App Page
+Access App Builder:
+From Setup, enter App Builder in the Quick Find box, then click on Lightning App Builder.
+Create a New Page:
+Click New and select Home Page, then click Next.
+Configure the Page:
+Name the page EduConsultPro Home Page.
+Select the Standard Home Page template and click Done.
+Add Flow Component:
+Drag the Flow component to the top-right region of the page.
+Search for EduConsultantPro Flow and select it.
+Save the Page:
+Click Save.
+Activate the Page:
+Click Activate.
+Select App and Profile, then click Assign to Apps and Profiles.
+Select App and Profile:
+Select the Sales app, then click Next.
+Scroll down the list of profiles and select System Administrator, then click Next.
+Review and Save Assignment:
+Review the assignment, then click Save.
+Conclusion
+
+This project documentation outlines the creation of a Salesforce flow for EduConsultantPro, enabling seamless interactions for existing and new students of the coaching centre. Key components included Screen Elements for user input, Decision Elements for navigation, and Subflow Elements for processing student requests. Additionally, a Lightning App Page was created to enhance accessibility. This implementation improves service delivery and user satisfaction on the Coaching centre.
