@@ -1,0 +1,183 @@
+continue the Record-Triggered flow
+Add a Screen Element:
+Drag the Screen element onto the flow canvas.
+In the Screen Properties pane 
+ Label : Get Student Info.
+Add Text Components:
+From the left-side panel, drag the Text component to the main panel twice.
+1st Text Component:
+Label: Enter Student Name.
+2nd Text Component:
+Label: Enter Student Email.
+Save the Screen element.
+Add GET Record Element:
+Drag the Get Record element onto the flow canvas after the Decision Element under the IELTS path.
+Label: Get Rec.
+Configure the GET Record Element:
+Select Object: Student.
+Condition Requirement: All Conditions are Met (AND).
+Define Conditions:
+Field: Student Name.
+Operator Equals.
+Value: {!Enter_Student_Name}.
+Field: Email__c
+Operator: Equals.
+Value:{!Enter_Student_Email}.
+Save the GET Record Element.
+Add Decision Element:
+Drag the Decision element onto the flow canvas after the Select Display Student Details Element.
+Label : Appointment or Case.
+Configure the Appointment Outcome:
+Under Outcome
+ label : Appointment.
+Resource:{!How_may_I_Help_you}.
+Operator: Equals.
+Value: {!Book_an_Appointment}.
+Add Case Outcome:
+Click on the + icon to add a new outcome.
+Repeat above process for the Case option, configuring it similarly:
+ Label: Case.
+Resource: {!How_may_I_Help_you}.
+Operator: Equals.
+Value: Set to the appropriate value for case options.
+Save the Decision Element.
+Add Screen Element:
+Drag the Screen element onto the flow canvas after the Decision Element on the Appointment path.
+Label: Appointment Booking Screen.
+Configure Record Variable Input:
+Click on Fields in the Screen Properties pane.
+Click on the Record Variable Input option.
+Create a new resource by clicking
+ New Resource : AppointmentRecordRes
+Set the variable type 
+ Record : Appointment 
+Drag Required Fields:
+From the available fields in the Appointment object, drag all the necessary fields onto the screen to collect the required student information.
+Save the Screen Element.
+Add GET Record Element:
+Drag the Get Record element onto the flow canvas after the Decision Element under the Appointment path.
+Label: Get Consultant Rec.
+Configure the GET Record Element:
+Select Object: Consultant.
+Condition Requirement: All Conditions are Met (AND).
+Define Conditions:
+Field: Name.
+Operator: Equals.
+Value: {!AppointmentRecordRes.Consultant_Name__c}.
+Save the GET Record Element.
+Add Create Records Element:
+Drag the Create Records element onto the flow canvas after the Get Consultant Rec element.
+Label : Create Appointment.
+Configure the Create Records Element:
+ How many records to create: One.
+Under How to set the record fields, select Use separate resources, and literal values.
+Select Object:
+Choose Appointment as the object.
+Define Fields and Values:
+Field: Appointment_DateTime__c
+Value: {!AppointmentRecordRes.Appointment_DateTime__c}.
+Field: Consultant__c
+Value: {!Get_Consultant_Rec.Id}.
+Field: Notes__c
+Value: {!AppointmentRecordRes.Notes__c}.
+Field: PurposeTopic__c
+Value: {!AppointmentRecordRes.PurposeTopic__c}.
+Field: Student_Name__c
+Value: {!Get_Rec.Id}.
+Save the Create Records Element.
+Add Screen Element:
+Drag the Screen element onto the flow canvas after the Send Email to Student Action Element.
+Label : Confirmation Screen.
+Add Display Text Component:
+From the left-side panel, search for the Display Text component and drag it to the main panel.
+Label : Appointment_Confirmation.
+Configure Display Text:
+
+Consultant Name: {!Get_Consultant_Rec.Name},
+
+Date & Time: {!AppointmentRecordRes.Appointment_DateTime__c},
+
+Notes: {!AppointmentRecordRes.Notes__c}
+Save the Screen Element.
+Add Subflow Element:
+Drag the Subflow element onto the flow canvas after the Decision Element on the Case path.
+Search for and select Create a Case.
+Label : Create Student Case.
+Configure Subflow:
+Ensure any required input variables for the Create a Case subflow are correctly mapped.
+Save the Flow:
+Save the flow as
+  label : EduConsultantPro Existing Student Flow.
+
+Create a ScreenFlow to Combine all the flows at one place
+Add Screen Element:
+Drag the Screen element onto the flow canvas.
+Label : Welcome Screen.
+Add Display Text Component:
+From the left-side panel, search for the Display Text component and drag it to the main panel.
+Label : SuccessMessage.
+Configure Display Text
+
+Welcome to EduConsultantPro
+
+your premier destination for education and immigration solutions!
+
+At EduConsultantPro, we understand that embarking on educational or immigration journeys can be both exhilarating and daunting. That's why we're here to guide you every step of the way with expertise, dedication, and personalized support.
+
+Whether you're seeking to pursue your academic dreams abroad, navigate the complexities of immigration processes, or enhance your professional skills through international opportunities, EduConsultantPro is your trusted partner.
+
+Our team of seasoned consultants is committed to understanding your unique aspirations and crafting tailored strategies to help you achieve your goals efficiently and effectively. From selecting the right educational institution to navigating visa procedures, our comprehensive services cover all aspects of your journey.
+
+At EduConsultantPro, we believe in fostering inclusive communities and unlocking the full potential of every individual. With our unwavering commitment to excellence and integrity, we strive to make your experience with us seamless and rewarding.
+
+Welcome to EduConsultantPro – where your aspirations meet our expertise, and together, we pave the path to success. Let's embark on this transformative journey together!
+
+Click Done to finish configuring the screen.
+Add Screen Element:
+Drag the Screen element onto the flow canvas after the Welcome Screen Element.
+Label : Existing or New Student Confirmation Screen.
+Add Radio Button Component:
+From the left-side panel, search for the Radio Buttons component and drag it to the main panel.
+Label : Are you an Existing Student?
+Add Choices:
+Click on Add Choice.
+Type Yes in the input field and click Create Yes choice.
+Repeat the process to create a second choice:
+Type No in the input field and click Create No choice.
+Save the Screen Element.
+Add Decision Element:
+Drag the Decision element onto the flow canvas after the Existing or New Student Confirmation Screen Element.
+Label : Decision 1.
+Configure Outcome for Existing Student:
+Under Outcome
+ label :  If Existing Student.
+Set the condition as follows:
+Resource: {!Are_you_a_Existing_Student}
+Operator: Equals
+Value: {!Yes}
+Add Outcome for New Student:
+Click on the + icon to add a new outcome.
+Label : If New Student.
+Set the condition as follows:
+Resource: {!Are_you_a_Existing_Student}
+Operator: Equals
+Value: {!No}
+Save the Decision Element.
+Add Subflow Element:
+Drag the Subflow element onto the flow canvas after the Decision 1 Element on the If Existing Student path.
+Search for and select EduConsultantPro Existing Student Flow.
+Label : Existing Student Flow.
+Configure Subflow:
+Ensure any required input variables for the EduConsultantPro Existing Student Flow are correctly mapped.
+Save the Flow:
+Save the flow 
+ label : EduConsultantPro Existing Student Flow
+Add Subflow Element:
+Drag the Subflow element onto the flow canvas after the Decision 1 Element on the If Not an Existing Student path.
+Search for and select EduConsultantPro Student Flow.
+Label : New Student Flow.
+Configure Subflow:
+Ensure any required input variables for the EduConsultantPro Student Flow are correctly mapped.
+Save the Flow:
+Click Done to finalize the changes.
+Save the flow and label: EduConsultPro Flow.
