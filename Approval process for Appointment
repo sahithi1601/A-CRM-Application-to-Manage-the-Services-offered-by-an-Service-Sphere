@@ -1,0 +1,80 @@
+
+Create an email template :
+
+Navigate to Lightning Email Templates:
+Go to Setup.
+In the Quick Find box, type Templates and select Lightning Email Templates.
+Enable Folders :
+Toggle on the option to use folders with email templates if prompted.
+Create a New Folder:
+Go to App Launcher, search for Email Templates, and open it.
+Click New Folder and give it a desired name.
+Create a New Email Template:
+Within the Email Templates section, click New Email Template.
+Select the folder you created earlier to store the template.
+Template name:  Submission Template.
+		Template Content: 
+Dear {{{Appointment__c.Student_Name__c}}},
+
+I hope this email finds you well. I am writing to confirm the details of our upcoming appointment scheduled for {{{Appointment__c.Appointment_DateTime__c}}} regarding {{{Appointment__c.PurposeTopic__c}}}.
+
+**Appointment Details:**
+- **Appointment No**: {{{Appointment__c.Name}}},
+- **Student Name**: {{{Appointment__c.Student_Name__c}}},
+- **Consultant Name**: {{{Appointment__c.Consultant__c}}},
+- **Date & Time**: {{{Appointment__c.Appointment_DateTime__c}}},
+- **Purpose**: {{{Appointment__c.PurposeTopic__c}}}
+
+I want to assure you that I am looking forward to our meeting and am fully prepared to address any questions or concerns you may have regarding {{{Appointment__c.PurposeTopic__c}}}. Your success and satisfaction are my top priorities, and I am committed to providing you with the guidance and support you need.
+
+If you have any specific topics or questions you would like to discuss during our appointment, please feel free to share them with me in advance. This will help ensure that our time together is as productive and beneficial as possible.
+
+If for any reason you need to reschedule or cancel our appointment, please notify me at your earliest convenience so that we can make alternative arrangements.
+
+Once again, thank you for choosing to work with me on this matter. I am confident that our collaboration will lead to positive outcomes and progress toward your goals.
+
+If you have any questions or require further information before our scheduled appointment, please don't hesitate to reach out to me.
+
+Looking forward to our meeting.
+
+Best regards,
+
+{{{Recipient.Name}}},
+
+Save the Template:
+Once we entered the content, click Save to save the template.
+we have to Create two more Email templates for Approval and Rejection of Request similar to the previous one.
+Create an Approval Process for the Appointment object
+
+Navigate to Approval Processes:
+Go to Setup.
+In the Quick Find box, type Approval Processes and select it.
+Select the Object:
+In Manage Approval Processes For, select Appointment.
+Create New Approval Process:
+Click Create New Approval Process and choose Use Jump Start Wizard.
+Configure Approval Process:
+Process Name: Appointment Approval.
+Select Approver: Choose Automatically assign an approver using a standard or custom hierarchy field and select Manager as the approver.
+Click Next.
+For Next Automated Approver Determined By, select Manager.
+Set Record Editability Properties:
+Under Record Editability Properties, select Administrators OR the currently assigned approver can edit records during the approval process.
+Save the Approval Process:
+Click Save to save the approval process.
+Go to Approval Process Detail Page:
+Click View Approval Process Detail Page.
+Configure Initial Submission Actions:
+Under Initial Submission Actions, click Add New and select Field Update.
+Name: Submitted.
+Field to Update: Appointment: Status.
+A Specific Value: Pending.
+Click Save to save the field update action.
+Add Email Alert for Submission:
+Under Initial Submission Actions, click Add New and select Email Alert.
+Description: Submission Email Alert.
+Unique Name: This will auto-populate.
+Email Template: Submission Template .
+Recipient Type: Mani.
+Save the Email Alert.
+Repeat the Same process for Final Approval and Final Rejection actions.
