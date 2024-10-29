@@ -1,0 +1,19 @@
+User :
+Navigate to the Users Setup Page
+Go to Setup.
+Under Administration, click Users.
+Select New User.
+Fill in User Details:
+Last Name: Consultant.
+User License: Salesforce Platform.
+Profile: Standard Platform User.
+Save the new user.
+Configure the Approver Settings
+Navigate to the User Settings Page:
+Go to Setup.
+Under Administration, select Users.
+Select Mani  in the user list, then click Edit next to it.
+Set Approver Settings:
+Scroll down to the bottom of the page to locate the Approver Settings section.
+In the Manager field, select Consultant from the list.
+Save the changes occured.
