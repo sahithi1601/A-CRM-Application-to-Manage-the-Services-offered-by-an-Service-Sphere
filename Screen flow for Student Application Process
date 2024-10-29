@@ -1,0 +1,126 @@
+Creating a ScreenFlow For Student Application Process: 
+Follow these steps to create a flow that allows users to input details and create a record in the Venue object:
+Access Flow Builder:
+Go to Setup in Salesforce.
+Type Flow in the Quick Find box and select Flows.
+Click on New Flow and choose Screen Flow. Click Create.
+Add Screen Element:
+Click the ‘+’ icon between the Start and End elements, and select Screen.
+Set the Screen Properties:
+Label: Student Info
+API Name: Auto generated
+Add Elements to the Screen:
+create element: 
+label: Create Student Record
+API Name: Auto generated
+Record variable resource: StudentRecordRes
+Add Screen Element:
+Click the ‘+’ icon between the Start and End elements, and select Screen.
+Set the Screen Properties:
+Label: Course Screen
+API Name: Auto generated
+Add Decision element: after screen add decision element.
+label: Selecting Course.
+API Name:Selecting_Course
+Add Components to the Screen:
+EMCET:
+Click on Text Component.
+Label: EMCET
+API Name: EMCET
+JEE MAINS:
+Click on Text Component.
+Label: JEE MAINS
+API Name: JEE_MAINS 
+JEE ADVANCE:
+Click on Text Component.
+Label: JEE ADVANCE
+API Name: JEE_ADVANCE
+KLCET:
+Click on Text Component.
+Label: KLCET
+API Name: KLCET
+NEET:
+Click on Text Component.
+Label: NEET
+API Name: NEET
+Locate the Decision Element and select the "EMCET" path.
+Add GET Record Element:
+Drag the Get Records element from the palette to the canvas and place it after the Decision element in the  path.
+Label :Get EMCET Rec
+Configure the GET Record Element:
+Object: Course 
+Condition Requirements: All Conditions are Met (AND).
+Set the Condition:
+Field: Course Name.
+Operator: Equals.
+Value: {!Select_Course}
+Add Create Records Element:
+Drag the Create Records element from the palette to the canvas and place it after the Get EMCET Rec element.
+Label:  Create EMCET Registration Rec.
+Configure the Create Records Element:
+No.of Records to Create: One.
+Object:  Registration 
+Field: Course_Name__c
+Value: {!Get_EMCET_Rec.Id}
+Field: Student_Name__c
+Value:{!StudentRecordRes.Id}
+Repeat the same process for JEE MAINS, JEE ADVANCE, KLCET and NEET paths.
+create the Email Text Template : Open the Toolbox in Flow Builder: In Flow Builder, click on the Toggle Toolbox in the left corner.
+Create a New Resource:
+Resource Type: Select Text Template.
+Configure the Text Template:
+API Name: StuRegistrationEmailTextTempBody.
+Description Text: Dear {!StudentRecordRes.Name},
+
+Congratulations and welcome to EduConsultantPro!
+
+We are delighted to inform you that your registration on our platform has been successfully completed. You are now part of our esteemed community dedicated to empowering students like you to achieve their educational and immigration aspirations.
+
+At EduConsultantPro, we understand the importance of your academic and career goals, and we are committed to providing you with the highest level of support and guidance throughout your journey.
+
+Here are a few key points to help you get started:
+
+- **Explore Our Resources**: Take some time to explore the wide range of resources, tools, and services available on the EduConsultantPro platform. From educational insights to immigration advice, we offer comprehensive support tailored to your needs.
+
+- **Connect with Our Consultants**: Our team of experienced consultants is here to assist you at every stage of your educational and immigration endeavors. Don't hesitate to reach out to us with any questions, concerns, or inquiries you may have. We're here to help!
+
+- **Stay Updated**: Keep an eye on your inbox for important updates, announcements, and exclusive opportunities from EduConsultantPro. We'll ensure that you're informed about the latest developments and relevant information to support your journey.
+
+- **Engage with the Community**: Join our vibrant community of students, professionals, and experts who share your passion for education and global opportunities. Connect with like-minded individuals, participate in discussions, and expand your network.
+
+Once again, congratulations on taking this important step towards realizing your academic and career aspirations. We are thrilled to have you as part of the EduConsultantPro family and look forward to supporting you on your journey to success.
+
+If you have any questions or need assistance, please don't hesitate to contact us.
+
+Thank you.
+Click Done to save the Text Template.
+Repeat the same process to create an email text template for the email subject. label : “StuRegistrationEmailTextTempSub”
+use the same text message in the body and save it.
+Add Action Element:
+Drag the Action element from the palette to the canvas and place it after all the Decision paths.
+Label : Send Email to Student.
+Configure Action Element :
+Selected action: Send Email or Email Alert
+Set Input Values for Selected Action:
+Body: {!StuRegistrationEmailTextTempBody}
+Recipient Address List: {!StudentRecordRes.Email__c}
+Subject: {!StuRegistrationEmailTextTempSub}
+Save and Connect the final Decision path to the Send Email to Student action element.
+Add a Screen Element:
+Drag the Screen element from the palette to the canvas and place it after the Send Email to Student action element.
+Label : Success Screen.
+Add Display Text Component:
+Drag the Display Text component into the main panel.
+Label : SuccessMessage.
+Display Text : Dear {!StudentRecordRes.Name},
+
+Congratulations and welcome to EduConsultantPro!
+
+We are delighted to inform you that your registration on our platform has been successfully completed. You are now part of our esteemed community dedicated to empowering students like you to achieve their educational and immigration aspirations.
+
+Your registration details have been sent via email; kindly check it once.
+
+Thank you.
+Click Done to save the screen element.
+Save the Flow:
+Save the flow as  EduConsultPro Student Flow.
