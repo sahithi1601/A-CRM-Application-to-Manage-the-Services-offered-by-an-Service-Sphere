@@ -1,0 +1,23 @@
+Purpose of Course objects
+The Course object in the Salesforce CRM application is designed to manage the various courses offered by the coaching center efficiently. This custom object serves as a central repository for all course-related information, allowing the institution to track details specific to each course, such as curriculum, schedule, instructor, and enrolled students. Remaining course objects should be Consultant, Student and Appointment.
+Feilds of Objects:
+Account (Standard Object)
+Purpose: To Represents the organization or individual clients that the Coaching centre serves, including students, consultants, or instructors.
+Key Fields: Account Name (Text), Account Type (Picklist), Status (Picklist).
+Relationships: Multiple contacts associated with each account, Service requests initiated by the account and services  also related to the account.
+Contact (Standard Object)
+Purpose: Stores individual client or partner contact information for communication and service management.
+Key Fields: First Name and Last Name (Text) as the student name, Email (Email), Phone (number), Role (Picklist).
+Relationships: Accounts, service enrollments and service requests are initiated by the contact.
+Service (Custom Object)
+Purpose: The services offered by the coaching centre, including their descriptions, categories, and costs.
+Key Fields: Service Name (Text), Service Code (Unique Identifier), Category (Picklist), Cost (Currency) and Status (Picklist).
+Relationships: linking of accounts, enrollments for services requests also associated for the services.
+Service Request (Custom Object)
+Purpose: Manages requests for services made by accounts or contacts, including statuses and priority levels.
+Key Fields: Request ID (Auto Number), Request Date (Date),status (picklist) and Priority (Picklist).
+Relationships: Accounts, contacts and services are associated and initiated by the request.
+Feedback (Custom Object)
+Purpose: Gathers feedback from contacts on specific service enrollments to gauge satisfaction and improve service quality.
+Key Fields: Feedback ID (Auto Number), Rating (Number, 1–5 scale), Comments (Long Text Area) and Date (Date/Time).
+Relationships: Service enrollment and contact providing for the feedback.
