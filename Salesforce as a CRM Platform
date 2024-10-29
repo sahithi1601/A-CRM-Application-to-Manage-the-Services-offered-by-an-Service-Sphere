@@ -1,0 +1,23 @@
+Milestone 1: Salesforce Introduction  
+Overview of Salesforce as a CRM Platform  
+Salesforce is a leading cloud-based CRM (Customer Relationship Management) platform, offering comprehensive solutions for managing customer relationships, automating workflows, and providing deep insights through data-driven analytics. In the context of a CRM application for a coaching center, Salesforce provides the tools and flexibility needed to manage student and parent relationships, schedule classes, track performance, and streamline administrative processes.
+Creating Developer Account  
+Creating a developer org in salesforce. 
+Go to https://developer.salesforce.com/signup
+On the sign up form, enter the following details : 
+First name & Last name 
+Email 
+Role : Developer 
+Company : College or Company Name 
+County : India 
+Postal Code : pin code 
+Username : should be a combination of your name and company
+This need not be an actual email id, you can give anything in the format : 
+username@organization.com 
+Click on sign me up after filling these. 
+Account Activation  
+Go to the inbox of the email that you used while signing up. Click on the verify account to activate your account. The email may take 5-10mins.
+Click on Verify Account
+Give a password and answer a security question and click on change password.
+Give a password and answer a security question and click on change password.
+Then you will redirect to your salesforce setup page.
