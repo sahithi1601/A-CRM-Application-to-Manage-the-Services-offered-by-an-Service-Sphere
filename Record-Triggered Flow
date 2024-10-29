@@ -1,0 +1,23 @@
+Record-Triggered Flow
+Navigate to Flows:
+Go to Setup.
+In the Quick Find box, type Flows and select it.
+Create a New Flow:
+Click New Flow.
+Select Record-Triggered Flow.
+Click Create.
+Configure the Start Element:
+In the Configure Start window, set the following:
+Object: Appointment.
+Trigger the Flow When: A record is created.
+Save the flow configuration.
+ Add an Action Element
+Open the Flow Canvas:
+After configuring the Start Element, you’ll be in the flow canvas.
+Add an Action Element:
+Drag the Action element onto the canvas, right after the Start Element.
+Action type : Submit for Approval 
+Label : Approval SubFlow.
+Set the RecordId:
+For RecordId, set it to {!$Record.Id} to pass the ID of the newly created Appointment record.
+Save the Flow, label it as "EduConsultPro Approval Flow and Click on Activate.
