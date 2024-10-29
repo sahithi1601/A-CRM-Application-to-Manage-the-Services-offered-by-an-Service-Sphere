@@ -1,0 +1,16 @@
+Create a Lightning App  
+Access App Manager:
+Go to Setup.
+Search for App Manager in the Quick Find bar and select it.
+Click on New Lightning App.
+App Details:
+   App Name: EduConsultPro
+   Selected Items: Add Home, Students, Courses, Consultants, Appointments, Registrations and cases.
+Set Navigation Style:
+Click Next.
+On the App Options page, set Navigation Style to Standard Navigation.
+Click Next.
+   4.   Add User Profiles:
+  Search for System Administrator in the search bar.
+Click on the arrow button to add it.
+Click Save & Finish.
